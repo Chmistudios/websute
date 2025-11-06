@@ -19,15 +19,18 @@
     nav a { color: #e5ffcc; padding: 10px 18px; text-decoration: none; font-weight: bold; border-radius: 8px; background: rgba(84,158,70,0.7); margin: 0 5px; transition: background .2s; }
     nav a:hover { background: #a3d58c; color: #21420a; }
     h1 { font-family: 'Press Start 2P', 'Segoe UI', monospace; font-size: 2em; margin-bottom: 10px; color: #d5ffce; text-shadow: 2px 2px 0 #356c14;}
-    .vid-list { margin-top:24px; }
-    .vid-item { background:rgba(31,66,24,0.6);margin:10px 0;padding:12px;border-radius:10px;}
-    .vid-item-title { font-weight:bold; color:#afffbb; font-size:1.16em;}
-    .vid-link { color:#cafea2; text-decoration:underline; }
-    .vid-embed { display:block; margin: 15px auto 0 auto; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.4);}
     .countdown-section { margin:28px 0 16px 0; padding:14px; background:rgba(67,133,53,0.7); border-radius:11px; text-align:center;}
     .count-label { font-family: 'Press Start 2P', monospace; color:#91fdab; font-size:1.12em;}
     #countdown {font-size:1.2em; margin-top:8px; color:#dbfcb8;}
     .hidden {display:none;}
+    .video-list { margin-top:28px; }
+    .video-list ul { list-style: disc inside; }
+    .video-list li { margin: 18px 0; font-size:1.13em; background:rgba(28,80,23,0.4); padding:12px; border-radius:9px;}
+    .video-list a { color:#aafd99; text-decoration:underline; font-weight: bold; }
+    .video-list a:hover { color:#dbffbb; }
+    .vid-item-title { font-weight:bold; color:#afffbb; font-size:1.16em;}
+    /* Optional embeddeds */
+    .vid-embed { display:block; margin: 15px auto 0 auto; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.4);}
   </style>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
 </head>
@@ -47,37 +50,40 @@
       <div id="countdown"></div>
     </div>
 
-    <div class="vid-list">
-      <!-- EXAMPLES—ADD YOUR OWN BELOW -->
-      <div class="vid-item">
-        <span class="vid-item-title">Cabbage Farm Tour</span><br>
-        <a class="vid-link" href="https://www.youtube.com/watch?v=dummyID1" target="_blank">Watch on YouTube</a>
-        <iframe class="vid-embed" width="340" height="200" src="https://www.youtube.com/embed/dummyID1" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="vid-item">
-        <span class="vid-item-title">Uncensored Field Footage (MP4)</span><br>
-        <a class="vid-link" href="videos/cabbage_raw.mp4" target="_blank">Direct download MP4 (Uncensored)</a>
-        <!-- Embedded direct video -->
-        <video class="vid-embed" width="340" controls>
-          <source src="videos/cabbage_raw.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="vid-item">
-        <span class="vid-item-title">Discord Only Video</span><br>
-        <a class="vid-link" href="https://discord.com/channels/dummyServerID/dummyVideoMsgID" target="_blank">View on Discord</a>
-      </div>
-      <!-- COPY AND EDIT THIS BLOCK TO ADD NEW VIDEOS! -->
-      <!--
-      <div class="vid-item">
-        <span class="vid-item-title">Your Video Name</span><br>
-        <a class="vid-link" href="YOUR-LINK" target="_blank">Watch/Download</a>
-        <iframe class="vid-embed" width="340" height="200" src="YOUR-YOUTUBE-EMBED-LINK" frameborder="0" allowfullscreen></iframe>
-        <video class="vid-embed" width="340" controls>
-          <source src="YOUR-MP4-LINK" type="video/mp4">
-        </video>
-      </div>
-      -->
+    <div class="video-list">
+      <ul>
+        <!-- Add new video links here, just copy and paste <li> blocks! -->
+        <li>
+          <span class="vid-item-title">Cabbage Farm Tour (YouTube)</span><br>
+          <a href="https://www.youtube.com/watch?v=dummyID1" target="_blank">Watch on YouTube</a>
+        </li>
+        <li>
+          <span class="vid-item-title">Uncensored Field Footage (MP4 direct)</span><br>
+          <a href="videos/cabbage_raw.mp4" target="_blank">Download MP4</a>
+        </li>
+        <li>
+          <span class="vid-item-title">Funny Discord Clip</span><br>
+          <a href="https://discord.com/channels/dummyServerID/dummyVideoID" target="_blank">View on Discord</a>
+        </li>
+        <!-- Example of embedding a YouTube video: -->
+        <li>
+          <span class="vid-item-title">Embedded Cabbage Review</span><br>
+          <iframe class="vid-embed" width="340" height="200" src="https://www.youtube.com/embed/dummyID2" frameborder="0" allowfullscreen></iframe>
+        </li>
+        <!-- Example of embedding an uncensored direct MP4 video: -->
+        <li>
+          <span class="vid-item-title">Cabbage Raw (Uncensored MP4)</span><br>
+          <video class="vid-embed" width="340" controls>
+            <source src="videos/cabbage_raw.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </li>
+        <!-- Add more below! -->
+        <li>
+          <span class="vid-item-title">Your Video Title</span><br>
+          <a href="YOUR-LINK-HERE" target="_blank">Where to watch/download</a>
+        </li>
+      </ul>
     </div>
   </div>
   <script>
@@ -89,7 +95,7 @@
       var html = document.documentElement.innerHTML;
       var match = html.match(/\{timer:(\d)\}/);
       if (match && match[1] === "1") {
-        timerEnabled = false;
+        timerEnabled = False;
       }
     })();
 
