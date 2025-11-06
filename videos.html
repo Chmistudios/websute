@@ -29,7 +29,6 @@
     .video-list a { color:#aafd99; text-decoration:underline; font-weight: bold; }
     .video-list a:hover { color:#dbffbb; }
     .vid-item-title { font-weight:bold; color:#afffbb; font-size:1.16em;}
-    /* Optional embeddeds */
     .vid-embed { display:block; margin: 15px auto 0 auto; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.4);}
   </style>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
@@ -44,44 +43,16 @@
     </nav>
     <h1>Videos!</h1>
     <!-- {timer:1} --> <!-- Change to {timer:0} to turn timer OFF -->
-
     <div id="countdown-section" class="countdown-section">
       <div class="count-label">Next Video Drops In:</div>
       <div id="countdown"></div>
     </div>
-
     <div class="video-list">
-      <ul>
-        <!-- Add new video links here, just copy and paste <li> blocks! -->
+      <ul id="videoItems">
+        <!-- {private:0} -->
         <li>
-          <span class="vid-item-title">Cabbage Farm Tour (YouTube)</span><br>
-          <a href="https://www.youtube.com/watch?v=dummyID1" target="_blank">Watch on YouTube</a>
-        </li>
-        <li>
-          <span class="vid-item-title">Uncensored Field Footage (MP4 direct)</span><br>
-          <a href="videos/cabbage_raw.mp4" target="_blank">Download MP4</a>
-        </li>
-        <li>
-          <span class="vid-item-title">Funny Discord Clip</span><br>
-          <a href="https://discord.com/channels/dummyServerID/dummyVideoID" target="_blank">View on Discord</a>
-        </li>
-        <!-- Example of embedding a YouTube video: -->
-        <li>
-          <span class="vid-item-title">Embedded Cabbage Review</span><br>
-          <iframe class="vid-embed" width="340" height="200" src="https://www.youtube.com/embed/dummyID2" frameborder="0" allowfullscreen></iframe>
-        </li>
-        <!-- Example of embedding an uncensored direct MP4 video: -->
-        <li>
-          <span class="vid-item-title">Cabbage Raw (Uncensored MP4)</span><br>
-          <video class="vid-embed" width="340" controls>
-            <source src="videos/cabbage_raw.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </li>
-        <!-- Add more below! -->
-        <li>
-          <span class="vid-item-title">Your Video Title</span><br>
-          <a href="YOUR-LINK-HERE" target="_blank">Where to watch/download</a>
+          <span class="vid-item-title">Video i think you like </span><br>
+          <a href="https://youtu.be/7rPxAVe_-9Y?si=zmg0XSGlry4QsAbH" target="_blank">Watch on YouTube</a>
         </li>
       </ul>
     </div>
@@ -95,7 +66,7 @@
       var html = document.documentElement.innerHTML;
       var match = html.match(/\{timer:(\d)\}/);
       if (match && match[1] === "1") {
-        timerEnabled = False;
+        timerEnabled = false;
       }
     })();
 
@@ -131,6 +102,29 @@
       countdownSection.style.display = 'none';
       if(intervalId) clearInterval(intervalId);
     }
+
+    // PRIVATE VIDEO LOGIC: Hide videos that have <!-- {private:1} -->
+    window.addEventListener('DOMContentLoaded', function() {
+      var ul = document.getElementById('videoItems');
+      if (!ul) return;
+      var nodes = ul.childNodes;
+      let show = true;
+      for (let i=0; i<nodes.length; ++i) {
+        if (nodes[i].nodeType === Node.COMMENT_NODE) {
+          // Look for private flag
+          if (/\{private:1\}/.test(nodes[i].nodeValue)) {
+            show = false;
+          } else if (/\{private:0\}/.test(nodes[i].nodeValue)) {
+            show = true;
+          }
+        }
+        if (nodes[i].nodeType === Node.ELEMENT_NODE && nodes[i].tagName === "LI") {
+          if (!show) {
+            nodes[i].style.display = 'none';
+          }
+        }
+      }
+    });
   </script>
 </body>
 </html>
