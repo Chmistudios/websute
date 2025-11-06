@@ -21,6 +21,9 @@
     h1 { font-family: 'Press Start 2P', 'Segoe UI', monospace; font-size: 2em; margin-bottom: 10px; color: #d5ffce; text-shadow: 2px 2px 0 #356c14;}
     .vid-list { margin-top:24px; }
     .vid-item { background:rgba(31,66,24,0.6);margin:10px 0;padding:12px;border-radius:10px;}
+    .vid-item-title { font-weight:bold; color:#afffbb; font-size:1.16em;}
+    .vid-link { color:#cafea2; text-decoration:underline; }
+    .vid-embed { display:block; margin: 15px auto 0 auto; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.4);}
     .countdown-section { margin:28px 0 16px 0; padding:14px; background:rgba(67,133,53,0.7); border-radius:11px; text-align:center;}
     .count-label { font-family: 'Press Start 2P', monospace; color:#91fdab; font-size:1.12em;}
     #countdown {font-size:1.2em; margin-top:8px; color:#dbfcb8;}
@@ -43,21 +46,44 @@
       <div class="count-label">Next Video Drops In:</div>
       <div id="countdown"></div>
     </div>
+
     <div class="vid-list">
+      <!-- EXAMPLES—ADD YOUR OWN BELOW -->
       <div class="vid-item">
-        <b>Latest:</b>
-        <a href="https://www.youtube.com/@Cabbage_Gomez" target="_blank" style="color:#afffbb;">Check my Channel!</a>
+        <span class="vid-item-title">Cabbage Farm Tour</span><br>
+        <a class="vid-link" href="https://www.youtube.com/watch?v=dummyID1" target="_blank">Watch on YouTube</a>
+        <iframe class="vid-embed" width="340" height="200" src="https://www.youtube.com/embed/dummyID1" frameborder="0" allowfullscreen></iframe>
       </div>
+      <div class="vid-item">
+        <span class="vid-item-title">Uncensored Field Footage (MP4)</span><br>
+        <a class="vid-link" href="videos/cabbage_raw.mp4" target="_blank">Direct download MP4 (Uncensored)</a>
+        <!-- Embedded direct video -->
+        <video class="vid-embed" width="340" controls>
+          <source src="videos/cabbage_raw.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="vid-item">
+        <span class="vid-item-title">Discord Only Video</span><br>
+        <a class="vid-link" href="https://discord.com/channels/dummyServerID/dummyVideoMsgID" target="_blank">View on Discord</a>
+      </div>
+      <!-- COPY AND EDIT THIS BLOCK TO ADD NEW VIDEOS! -->
+      <!--
+      <div class="vid-item">
+        <span class="vid-item-title">Your Video Name</span><br>
+        <a class="vid-link" href="YOUR-LINK" target="_blank">Watch/Download</a>
+        <iframe class="vid-embed" width="340" height="200" src="YOUR-YOUTUBE-EMBED-LINK" frameborder="0" allowfullscreen></iframe>
+        <video class="vid-embed" width="340" controls>
+          <source src="YOUR-MP4-LINK" type="video/mp4">
+        </video>
+      </div>
+      -->
     </div>
   </div>
   <script>
-    // ===== Set your next video date below: =====
-    var nextVideoDate = new Date("2025-11-15T19:00:00"); // Year-Mo-Day Hour:Min:Sec UTC
+    var nextVideoDate = new Date("2025-11-15T19:00:00"); // Change this date!
 
-    // -------------------
     // TIMER ON/OFF LOGIC:
-    // -------------------
-    // Read {timer:X} from the HTML comment
     var timerEnabled = false;
     (function(){
       var html = document.documentElement.innerHTML;
@@ -93,11 +119,9 @@
     }
 
     if(timerEnabled) {
-      // Show the countdown section & start the timer
       countdownSection.style.display = '';
       startTimer();
     } else {
-      // Hide the entire countdown area
       countdownSection.style.display = 'none';
       if(intervalId) clearInterval(intervalId);
     }
