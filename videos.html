@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Videos - Cabbage Gomez</title>
+  <meta name="viewport" content="width=450, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('cabbage-field.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      color: #fff;
+    }
+    .overlay { background: rgba(28,73,18,0.6); position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; }
+    .content { position: relative; z-index: 2; padding: 24px; max-width: 600px; margin: 60px auto; background: rgba(42,120,36,0.82); border-radius: 16px; box-shadow: 0 3px 16px rgba(0,0,0,0.25); }
+    nav { margin-bottom: 20px; text-align: center; }
+    nav a { color: #e5ffcc; padding: 10px 18px; text-decoration: none; font-weight: bold; border-radius: 8px; background: rgba(84,158,70,0.7); margin: 0 5px; transition: background .2s; }
+    nav a:hover { background: #a3d58c; color: #21420a; }
+    h1 { font-family: 'Press Start 2P', 'Segoe UI', monospace; font-size: 2em; margin-bottom: 10px; color: #d5ffce; text-shadow: 2px 2px 0 #356c14;}
+    .vid-list { margin-top:24px; }
+    .vid-item { background:rgba(31,66,24,0.6);margin:10px 0;padding:12px;border-radius:10px;}
+    .countdown-section { margin:28px 0 16px 0; padding:14px; background:rgba(67,133,53,0.7); border-radius:11px; text-align:center;}
+    .count-label { font-family: 'Press Start 2P', monospace; color:#91fdab; font-size:1.12em;}
+    #countdown {font-size:1.2em; margin-top:8px; color:#dbfcb8;}
+    .hidden {display:none;}
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="content">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="videos.html">Videos</a>
+      <a href="about.html">About</a>
+    </nav>
+    <h1>Videos!</h1>
+    <!-- {timer:1} --> <!-- Change to {timer:0} to turn timer OFF -->
+
+    <div id="countdown-section" class="countdown-section">
+      <div class="count-label">Next Video Drops In:</div>
+      <div id="countdown"></div>
+    </div>
+    <div class="vid-list">
+      <div class="vid-item">
+        <b>Latest:</b>
+        <a href="https://www.youtube.com/@Cabbage_Gomez" target="_blank" style="color:#afffbb;">Check my Channel!</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    // ===== Set your next video date below: =====
+    var nextVideoDate = new Date("2025-11-15T19:00:00"); // Year-Mo-Day Hour:Min:Sec UTC
+
+    // -------------------
+    // TIMER ON/OFF LOGIC:
+    // -------------------
+    // Read {timer:X} from the HTML comment
+    var timerEnabled = false;
+    (function(){
+      var html = document.documentElement.innerHTML;
+      var match = html.match(/\{timer:(\d)\}/);
+      if (match && match[1] === "1") {
+        timerEnabled = true;
+      }
+    })();
+
+    var countdownDiv = document.getElementById('countdown');
+    var countdownSection = document.getElementById('countdown-section');
+    var intervalId = null;
+
+    function updateCountdown() {
+      var now = new Date();
+      var diff = nextVideoDate - now;
+      if(diff <= 0) {
+        countdownDiv.innerHTML = "Now Live!";
+        return;
+      }
+      var days = Math.floor(diff/(1000*60*60*24));
+      var hrs = Math.floor((diff/(1000*60*60))%24);
+      var mins = Math.floor((diff/(1000*60))%60);
+      var secs = Math.floor((diff/1000)%60);
+
+      countdownDiv.innerHTML =
+        days+"d "+hrs+"h "+mins+"m "+secs+"s";
+    }
+
+    function startTimer() {
+      intervalId = setInterval(updateCountdown, 1000);
+      updateCountdown();
+    }
+
+    if(timerEnabled) {
+      // Show the countdown section & start the timer
+      countdownSection.style.display = '';
+      startTimer();
+    } else {
+      // Hide the entire countdown area
+      countdownSection.style.display = 'none';
+      if(intervalId) clearInterval(intervalId);
+    }
+  </script>
+</body>
+</html>
