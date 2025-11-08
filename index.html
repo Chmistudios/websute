@@ -1,99 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8">
   <title>Cabbage Gomez's Farm</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
+  <meta name="viewport" content="width=450, initial-scale=1">
   <style>
-    :root{
-      --panel-bg: rgba(42,120,36,0.88);
-      --accent: #aafd99;
-      --muted: #e5ffcc;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
       background: url('cabbage-field.jpg') no-repeat center center fixed;
       background-size: cover;
+      min-height: 100vh;
       color: #fff;
-      min-height:100vh;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
     }
-    .overlay{ position:fixed; inset:0; background: rgba(28,73,18,0.6); z-index:0; }
-    .wrap{ position:relative; z-index:2; max-width:1100px; margin:48px auto; padding:20px; display:grid; grid-template-columns: 1fr 320px; gap:20px; }
-    /* single column on small screens */
-    @media (max-width:860px){ .wrap{ grid-template-columns: 1fr; margin:20px; } }
-    .main {
-      background: var(--panel-bg);
-      padding:20px;
-      border-radius:12px;
-      box-shadow: 0 6px 28px rgba(0,0,0,.35);
+    .overlay {
+      background: rgba(28,73,18,0.6);
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
     }
-    .sidebar {
-      background: rgba(39,96,32,0.75);
-      padding:18px;
-      border-radius:12px;
-      height:fit-content;
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 24px;
+      max-width: 600px;
+      margin: 60px auto;
+      background: rgba(42,120,36,0.82);
+      border-radius: 16px;
+      box-shadow: 0 3px 16px rgba(0,0,0,0.25);
     }
-    nav{ text-align:center; margin-bottom:12px; }
-    nav a{ color:var(--muted); text-decoration:none; margin:0 6px; padding:8px 12px; background: rgba(84,158,70,0.6); border-radius:8px; font-weight:600; display:inline-block; }
-    nav a:hover{ background:#a3d58c; color:#21420a; }
-    h1 { font-family: 'Press Start 2P', monospace; font-size:1.9rem; margin:6px 0 12px; color:#d5ffce; text-shadow:2px 2px 0 #356c14; }
-    p.lead{ color:#f0ffe1; line-height:1.5; }
-    .side-title{ font-weight:700; color:var(--accent); margin-bottom:8px; font-size:.95rem; }
-    .info-row{ font-size:.95rem; color:#f5ffdf; margin-bottom:8px; }
-    .small-link{ color:var(--accent); text-decoration:none; display:block; margin-bottom:6px; }
-    .small-link:hover{ color:#dbffbb; }
-    footer{ color:#eaf7d7; margin-top:16px; font-size:.9rem; text-align:center; }
+    nav {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    nav a {
+      color: #e5ffcc;
+      padding: 10px 18px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      background: rgba(84,158,70,0.7);
+      margin: 0 5px;
+      transition: background .2s;
+    }
+    nav a:hover {
+      background: #a3d58c;
+      color: #21420a;
+    }
+    h1 {
+      font-family: 'Press Start 2P', 'Segoe UI', monospace;
+      font-size: 2.3em;
+      margin-bottom: 10px;
+      color: #d5ffce;
+      text-shadow: 2px 2px 0 #356c14;
+    }
+    .info { font-size: 1.1em; line-height: 1.5; color: #f0ffe1; }
+    .contact {
+      margin-top: 25px;
+      padding-top: 16px;
+      border-top: 1px solid #90b47a;
+      font-size: .96em;
+    }
   </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
 </head>
 <body>
   <div class="overlay"></div>
-  <div class="wrap">
-    <div class="main">
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="videos.html">Videos</a>
-        <a href="blog.html">Blog</a>
-        <a href="about.html">About</a>
-      </nav>
-
-      <h1>Welcome to Cabbage Gomez's Farm</h1>
-      <p class="lead">
-        Fresh vids, raw farm footage, and weird cabbage vibes. Use the navigation to jump to videos or the blog.
-      </p>
-
-      <section>
-        <h2 style="font-size:1.1rem;color:var(--accent)">Latest on the Blog</h2>
-        <ul style="padding-left:18px; color:#f7ffea;">
-          <li><a class="small-link" href="blog.html#post-intro">Intro: How I Started Farming Cabbage</a></li>
-          <li><a class="small-link" href="blog.html#post-gear">My Gear & Recording Setup</a></li>
-          <li><a class="small-link" href="blog.html#post-field-notes">Field Notes — Harvest Day</a></li>
-        </ul>
-      </section>
-
-      <footer>
-        Want somethin? Contact me at: <b>contact.chmi@proton.me</b>
-      </footer>
+  <div class="content">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="videos.html">Videos</a>
+      <a href="about.html">About</a>
+    </nav>
+    <h1>Cabbage Gomez's Pixel Farm</h1>
+    <div class="info">
+      Welcome to the cabbage farm! <br>
+      Check out my <a href="https://www.youtube.com/@Cabbage_Gomez" style="color:#aefd8f;">YouTube channel</a>.
+      <br><br>
+      Discord: <a href="https://discord.gg/AusgQsvRdr" style="color:#aefd8f;">Join</a>
     </div>
-
-    <aside class="sidebar">
-      <div class="side-title">About Me</div>
-      <div class="info-row"><strong>Cabbage Gomez</strong></div>
-      <div class="info-row">Discord: <a class="small-link" href="https://discord.gg/AusgQsvRdr" target="_blank">Join</a></div>
-      <div class="info-row">YouTube: <a class="small-link" href="https://www.youtube.com/@Cabbage_Gomez" target="_blank">@Cabbage_Gomez</a></div>
-      <div class="info-row">Email: <a class="small-link" href="mailto:contact.chmi@proton.me">contact.chmi@proton.me</a></div>
-      <div style="margin-top:10px; font-size:.95rem; color:#eaf7d7;">
-        Quick links:
-        <ul style="padding-left:16px; margin:8px 0 0 0;">
-          <li><a class="small-link" href="videos.html">Videos</a></li>
-          <li><a class="small-link" href="blog.html">Blog</a></li>
-        </ul>
-      </div>
-    </aside>
+    <div class="contact">
+      Want somethin? Contact me at: <br>
+      <b>contact.chmi@proton.me</b>
+    </div>
   </div>
 </body>
 </html>
