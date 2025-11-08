@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blog - Cabbage Gomez</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
+  <style>
+    :root{ --panel: rgba(42,120,36,0.9); --muted:#e5ffcc; --accent:#aafd99; }
+    *{box-sizing:border-box}
+    body{ margin:0; font-family: 'Segoe UI', sans-serif; background: url('cabbage-field.jpg') no-repeat center center fixed; background-size:cover; color:#fff; min-height:100vh; }
+    .overlay{ position:fixed; inset:0; background:rgba(28,73,18,0.6); z-index:0; }
+    .wrap{ position:relative; z-index:2; max-width:1100px; margin:48px auto; padding:20px; display:grid; grid-template-columns: 1fr 320px; gap:20px; }
+    @media (max-width:860px){ .wrap{ grid-template-columns:1fr; margin:20px; } .sidebar{order:2} }
+    .main{ background:var(--panel); padding:20px; border-radius:12px; box-shadow:0 6px 28px rgba(0,0,0,.35); }
+    .sidebar{ background: rgba(39,96,32,0.75); padding:18px; border-radius:12px; height:fit-content; }
+    nav{ text-align:center; margin-bottom:12px; }
+    nav a{ color:var(--muted); text-decoration:none; margin:0 6px; padding:8px 12px; background: rgba(84,158,70,0.6); border-radius:8px; font-weight:600; display:inline-block; }
+    nav a:hover{ background:#a3d58c; color:#21420a; }
+    h1 { font-family: 'Press Start 2P', monospace; font-size:1.9rem; color:#d5ffce; text-shadow:2px 2px 0 #356c14; margin:6px 0 12px; }
+    .post{ background: rgba(31,66,24,0.6); padding:14px; border-radius:10px; margin-bottom:16px; }
+    .post h2{ color:var(--accent); margin:0 0 6px 0; }
+    .post .meta{ color:#eaf7d7; font-size:.9rem; margin-bottom:8px; }
+    .post .excerpt{ color:#f5ffdf; line-height:1.5; }
+    .readmore{ display:inline-block; margin-top:8px; color:#dfffc5; text-decoration:underline; }
+    .sidebar .side-title{ font-weight:700; color:var(--accent); margin-bottom:8px; }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="wrap">
+    <div class="main">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="videos.html">Videos</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <h1>Blog</h1>
+
+      <!--
+        To add a post: copy one of the <article class="post"> blocks below,
+        change the id (anchor), title, date, and content.
+        Add a matching link to About's recent posts if you want it shown there.
+      -->
+
+      <article id="post-intro" class="post">
+        <h2>Intro: How I Started Farming Cabbage</h2>
+        <div class="meta">2025-09-01</div>
+        <div class="excerpt">
+          This is where it began — a small patch, a stubborn spade, and one weird cabbage seed. I started filming to remember the messy process.
+        </div>
+        <a class="readmore" href="#post-intro" onclick="toggleFull('post-intro-full', event)">Read full</a>
+
+        <div id="post-intro-full" class="full" style="display:none; margin-top:10px; color:#f7ffea;">
+          <p>I had no plan. The first season taught me more about bugs and patience than the internet ever could. Filming helped me notice details — the way leaves fold, the timing of watering, the light at 5pm. Over time I kept recording and decided to share the chaos.</p>
+        </div>
+      </article>
+
+      <article id="post-gear" class="post">
+        <h2>My Gear & Recording Setup</h2>
+        <div class="meta">2025-10-05</div>
+        <div class="excerpt">
+          Short overview of cameras, mics, and how I keep footage raw and uncensored.
+        </div>
+        <a class="readmore" href="#post-gear" onclick="toggleFull('post-gear-full', event)">Read full</a>
+
+        <div id="post-gear-full" class="full" style="display:none; margin-top:10px; color:#f7ffea;">
+          <p>I use a mix of action cams and a basic DSLR. Audio: simple lav and a Zoom recorder. I keep editing minimal — the goal is honest footage.</p>
+        </div>
+      </article>
+
+      <article id="post-field-notes" class="post">
+        <h2>Field Notes — Harvest Day</h2>
+        <div class="meta">2025-10-25</div>
+        <div class="excerpt">
+          Notes and short clips from the harvest — what went right, what went wrong, and how to time your harvest.
+        </div>
+        <a class="readmore" href="#post-field-notes" onclick="toggleFull('post-field-notes-full', event)">Read full</a>
+
+        <div id="post-field-notes-full" class="full" style="display:none; margin-top:10px; color:#f7ffea;">
+          <p>Harvest day is a drum. We start early, check for firmness, and harvest into coolers. Bugs reduce yield but don’t kill the vibe. Keep records and taste each row.</p>
+        </div>
+      </article>
+
+      <!-- Add more posts below -->
+    </div>
+
+    <aside class="sidebar">
+      <div class="side-title">Recent posts</div>
+      <ul style="padding-left:16px; color:#f4ffd7;">
+        <li><a href="#post-intro" style="color:#aafd99; text-decoration:none;">Intro: How I Started Farming Cabbage</a></li>
+        <li><a href="#post-gear" style="color:#aafd99; text-decoration:none;">My Gear & Recording Setup</a></li>
+        <li><a href="#post-field-notes" style="color:#aafd99; text-decoration:none;">Field Notes — Harvest Day</a></li>
+      </ul>
+
+      <div style="margin-top:14px;">
+        <div class="side-title">About</div>
+        <div style="color:#f5ffdf; font-size:.95rem;">
+          Contact: <br/><a style="color:#aafd99; text-decoration:none;" href="mailto:contact.chmi@proton.me">contact.chmi@proton.me</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    // small helper to toggle full post content
+    function toggleFull(id, event){
+      event.preventDefault();
+      var el = document.getElementById(id);
+      if(!el) return;
+      el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+      // scroll into view when expanded
+      if(el.style.display === 'block'){
+        el.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    }
+  </script>
+</body>
+</html>
